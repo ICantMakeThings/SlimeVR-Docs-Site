@@ -6,28 +6,66 @@
 This is the recommended method of getting the firmware if you don't need custom config or pin defines.
 ```
 
+## Table Of Contents
+
+- TOC
+  {:toc}
+
 ## Required Tools
 
 You only need the following if you are using precompiled firmware:
-* <a href="https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-Desktop">nRF Connect for Desktop</a> (Programmer) for flashing Nordic or eByte Dongles only
-* <a href="https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-Desktop">nRF Connect for Desktop</a> (Serial Terminal) for sending commands to your Receiver/Trackers, [see alternatives](smol-pairing-and-calibration.md#accessing-the-serial-console)
-* Or [SmolSlimeConfigurator](SmolSlimeConfigurator.md), an all-in-one programming and configuration tool for your Smol Slimes.
-* <a href="https://slimevr.dev/download">SlimeVR Server</a>
-    * 0.13.2 or later version
 
+- <a href="https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-Desktop">nRF Connect for Desktop</a> (Programmer) for flashing Nordic or eByte Dongles only
+- <a href="https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-Desktop">nRF Connect for Desktop</a> (Serial Terminal) for sending commands to your Receiver/Trackers, [see alternatives](smol-pairing-and-calibration.md#required-tools)
+- Or [SmolSlimeConfigurator](SmolSlimeConfigurator.md), an all-in-one programming and configuration tool for your Smol Slimes.
+- <a href="https://slimevr.dev/download">SlimeVR Server</a>
+    - 0.13.2 or later version
 
-## Latest Builds Bootloader (Automated)
+#### 💿 Bootloader
 
-#### 💿 Adafruit Bootloader
-| Device               | UF2 | HEX |
-| ------------------ | ---- | ---- |
-| ProMicro           | [Link](https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/update-slimenrf_promicro_bootloader-0.9.2-SlimeVR.7_nosd.uf2) | [Link](https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/slimenrf_promicro_bootloader-0.9.2-SlimeVR.7_s140_7.3.0.hex) |
-| XIAO | [Link](https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/update-slimenrf_xiao_sense_bootloader-0.9.2-SlimeVR.7_nosd.uf2) | [Link](https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/slimenrf_xiao_sense_bootloader-0.9.2-SlimeVR.7_s140_7.3.0.hex) |
-| R3 | [Link](https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/update-slimenrf_tracker_r3_bootloader-0.9.2-SlimeVR.7_nosd.uf2) | [Link](https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/slimenrf_tracker_r3_bootloader-0.9.2-SlimeVR.7_s140_7.3.0.hex) |
-| Butterfly P1 | [Link](https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/update-slimevr_mini_p1_bootloader-0.9.2-SlimeVR.7_nosd.uf2) | [Link](https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/slimevr_mini_p1_bootloader-0.9.2-SlimeVR.7_s140_7.3.0.hex) |
-| Butterfly P2 | [Link](https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/update-slimevr_mini_p2_bootloader-0.9.2-SlimeVR.7_nosd.uf2) | [Link](https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/slimevr_mini_p2_bootloader-0.9.2-SlimeVR.7_s140_7.3.0.hex) |
-| Butterfly P3, R6| [Link](https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/update-slimevr_mini_p3r6_bootloader-0.9.2-SlimeVR.7_nosd.uf2) | [Link](https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/slimevr_mini_p3r6_bootloader-0.9.2-SlimeVR.7_s140_7.3.0.hex) |
-| Butterfly P3, R7 | [Link](https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/update-slimevr_mini_p3r7_bootloader-0.9.2-SlimeVR.7_nosd.uf2) | [Link](https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/slimevr_mini_p3r7_bootloader-0.9.2-SlimeVR.7_s140_7.3.0.hex) |
+**Difference between UF2 and HEX:**
+- UF2 - USB flashing format
+- HEX - nRF Connect Programmer format. Handy if UF2 option not works
+
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>Device</th>
+        <th>UF2</th>
+        <th>HEX</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>ProMicro</td>
+      <td>
+        <a href="https://github.com/adafruit/Adafruit_nRF52_Bootloader/releases/download/0.11.0/update-nice_nano_bootloader-0.11.0_nosd.uf2">
+          Link
+          </a> <sup style="font-size:0.6em">✅ recommended</sup>
+      </td>
+      <td>
+        <a href="https://github.com/adafruit/Adafruit_nRF52_Bootloader/releases/download/0.11.0/nice_nano_bootloader-0.11.0_s140_6.1.1.hex">
+          Link
+          </a>
+      </td>
+    </tr>
+    <tr>
+      <td>XIAO</td>
+      <td>
+        <a href="https://github.com/adafruit/Adafruit_nRF52_Bootloader/releases/download/0.11.0/update-xiao_nrf52840_ble_sense_bootloader-0.11.0_nosd.uf2">
+          Link
+          </a> <sup style="font-size:0.6em">✅ recommended</sup>
+      </td>
+      <td>
+        <a href="https://github.com/adafruit/Adafruit_nRF52_Bootloader/releases/download/0.11.0/xiao_nrf52840_ble_sense_bootloader-0.11.0_s140_7.3.0.hex">
+          Link
+          </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 
 ## Latest Builds Firmware (Automated)
 
@@ -37,10 +75,82 @@ You only need the following if you are using precompiled firmware:
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
 | Nordic/eByte | [Link](https://github.com/Shine-Bright-Meow/SlimeNRF-Firmware-CI/releases/download/latest/SlimeNRF_Nordic_eByte_Dongle_Receiver.hex) |
 | Holyiot      | [Link](https://github.com/Shine-Bright-Meow/SlimeNRF-Firmware-CI/releases/download/latest/SlimeNRF_Holyiot_Dongle_Receiver.hex)      |
-| ProMicro     | [Link](https://github.com/Shine-Bright-Meow/SlimeNRF-Firmware-CI/releases/download/latest/SlimeNRF_ProMicro_Receiver.uf2)           |
+| ProMicro     | [Link](https://github.com/Shine-Bright-Meow/SlimeNRF-Firmware-CI/releases/download/latest/SlimeNRF_ProMicro_Receiver.uf2)            |
 | XIAO         | [Link](https://github.com/Shine-Bright-Meow/SlimeNRF-Firmware-CI/releases/download/latest/SlimeNRF_XIAO_Receiver.uf2)                |
 
 ### 🏃 Tracker
+
+#### Tracker Firmware Options Explained
+
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Values</th>
+        <th>Meaning</th>
+        <th>Recommended</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Protocol</strong></td>
+        <td>SPI/I2C</td>
+        <td>
+          Communication method between the microcontroller and IMU sensor.
+          <ul>
+            <li><strong>SPI:</strong> Generally faster and more reliable.</li>
+            <li><strong>I2C:</strong> Less efficient and is highly discouraged.</li>
+          </ul>
+        </td>
+        <td>SPI</td>
+      </tr>
+      <tr>
+        <td><strong>Clock</strong></td>
+        <td>On/Off</td>
+        <td>
+          Whether the attached IMU uses an external clock.
+            <ul>
+               <li>✅ = External clock present.</li>
+               <li>✖️ = Internal clock only.</li>
+            </ul>
+        </td>
+        <td>✅ (When hardware supports external clock)</td>
+      </tr>
+      <tr>
+        <td><strong>Sleep (WOM)</strong></td>
+        <td>✅/✖️</td>
+        <td>
+            WOM stands for Wake-On-Motion mode.
+            <ul>
+               <li>✅ = Tracker can sleep and wake on motion. Extends battery life.</li>
+               <li>✖️ = Always active. Less drift, better tracking, at the expense of battery life.</li>
+            </ul>
+            In both cases, the tracker enters deep sleep after 5 minutes of losing connection to the receiver.
+         </td>
+        <td>✖️ (Unless battery life is the absolute highest priority)</td>
+      </tr>
+      <tr>
+        <td><strong>SW0 Enabled (button)</strong></td>
+        <td>N/A</td>
+        <td>
+         <p>Firmware compiled with button support.</p>
+         <p>Allows physical button input for tracker control.</p>
+        </td>
+        <td>If your hardware has a button.</td>
+      </tr>
+      <tr>
+        <td><strong>SW0 Disabled (no button)</strong></td>
+        <td>N/A</td>
+        <td>
+         <p>Firmware compiled without button support.</p>
+         <p>No functionality assigned to physical button presses.</p>
+        </td>
+        <td>Non-standard option.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 #### 🥪 Stacked
 
@@ -470,4 +580,6 @@ Previous builds can be found here: <a href="https://github.com/Shine-Bright-Meow
 3. Download the desired device firmware.
 4. Extract the ZIP file.
 
-*Created by Shine Bright ✨, [Depact](https://github.com/Depact) and [Seneral](https://github.com/Seneral)*
+---
+
+_Created by Shine Bright ✨, [Depact](https://github.com/Depact) and [Seneral](https://github.com/Seneral)_

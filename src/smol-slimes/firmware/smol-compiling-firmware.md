@@ -4,6 +4,10 @@
 This is the method of compiling firmware if [pre-compiled firmware for default pins](./smol-pre-compiled-firmware.md) doesn't fit your needs.
 ```
 
+This page contains step-by-step guide for building the firmware from source, including required tools, repository setup, and build instructions.
+
+## Table of Contents
+
 * TOC
 {:toc}
 
@@ -12,7 +16,7 @@ For those interested in building the firmware yourself:
 * <a href="https://git-scm.com/download/win">Git Client</a>
 * <a href="https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-Desktop">nRF Connect for Desktop</a> with various integrated tools:
     * Programmer (for flashing Nordic and eByte Dongles only)
-    * Serial Terminal (for sending commands to your Receiver/Trackers, [see alternatives](smol-pairing-and-calibration.md#accessing-the-serial-console))
+    * Serial Terminal (for sending commands to your Receiver/Trackers, [see alternatives](smol-pairing-and-calibration.md#required-tools))
     * NOTE: Installing the Segger J-Link is not necessary for pre-defined boards.
 * <a href="https://code.visualstudio.com/download">VS Code</a> (For development purposes only)
     * <a href="https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-VS-Code">nRF Connect for VS Code by Nordic Semiconductor</a>
@@ -21,12 +25,12 @@ For those interested in building the firmware yourself:
             * SDK
                 * Click "Install SDK".
                 * Select "nRF Connect SDK".
-                * Select "v3.1.0".
+                * Select "v3.1.1".
                 * Press "Enter" key to install in default location.
                 * Click "Install".
             * Toolchain
                 * Click "Install Toolchain".
-                * Select "v3.1.0".
+                * Select "v3.1.1".
     * You may also set up a manual build environment in VS Code as the extension is known to fail on some certain Linux distributions.
 * <a href="https://slimevr.dev/download">SlimeVR Server</a>
     * 0.13.2 or later version
@@ -58,7 +62,7 @@ If you're using an existing case design, you can opt for prebuilt firmware; othe
 1. Make any pin changes or necessary adjustments to ```boards\MANUFACTURER\BOARD_NAME.dts```.
 1. Click on the nRF Connect tab located on the left side of your screen, approximately halfway down.
 1. Under "Applications" , click on "+ Add build configuration."
-1. Select ```3.1.0``` for the SDK and Toolchain drop-down menu.
+1. Select ```3.1.1``` for the SDK and Toolchain drop-down menu.
 1. Select a preset from the "Board Target".
 1. Scroll down and click the "Build Configuration" button.
 
@@ -96,8 +100,8 @@ Using a virtual environment (venv) will keep all build tools for Zephyr, such as
 ### Setup nRF Connect SDK code
 Please select an appropriate folder for installing the toolchain, such as `~/.toolchain-nrf52`. <br>
 Then execute: <br>
-`west init -m https://github.com/nrfconnect/sdk-nrf --mr v3.1.0 nrf52-sdk-3.1.0` <br>
-`cd nrf52-sdk-3.1.0` <br>
+`west init -m https://github.com/nrfconnect/sdk-nrf --mr v3.1.1 nrf52-sdk-3.1.1` <br>
+`cd nrf52-sdk-3.1.1` <br>
 `west update` (This will download dozens of Git repositories; it may take some time.) <br>
 `pip install -r zephyr/scripts/requirements-base.txt` (Install the remaining requirements for building.) <br>
 `west zephyr-export` (This will register the necessary CMake files in your home directory.) <br>
@@ -115,7 +119,7 @@ If you move this folder, you simply need to re-run the last command.
 Assuming your toolchain is installed in `~/.toolchain-nrf52` and you are in the firmware directory:
 ``` sh
 source ~/.venv/nrf52/bin/activate
-source ~/.toolchain-nrf52/nrf52-sdk-3.1.0/zephyr/zephyr-env.sh
+source ~/.toolchain-nrf52/nrf52-sdk-3.1.1/zephyr/zephyr-env.sh
 west build --board BOARD --build-dir build . -- -DNCS_TOOLCHAIN_VERSION=NONE -DBOARD_ROOT=.
 ```
 Replace BOARD with your specific board (e.g. `promicro_uf2/nrf52840` for the ProMicro, `nrf52840dongle/nrf52840` for a dongle receiver). <br>
@@ -134,7 +138,7 @@ Assuming your toolchain is installed in `~/.toolchain-nrf52`, use the following 
             "command": "source",
             "args": [
                 "~/.venv/nrf52/bin/activate", "&&",
-                "source", "~/.toolchain-nrf52/nrf52-sdk-3.1.0/zephyr/zephyr-env.sh", "&&",
+                "source", "~/.toolchain-nrf52/nrf52-sdk-3.1.1/zephyr/zephyr-env.sh", "&&",
                 "west", "build", "--board", "BOARD", "--build-dir", "build",
                 "${workspaceFolder}", "--",
                 "-DNCS_TOOLCHAIN_VERSION=NONE", "-DBOARD_ROOT=${workspaceFolder}"
@@ -232,9 +236,40 @@ Please open a GitHub issue for any firmware bugs or issues in the corresponding 
 **Resource:** <a href="https://github.com/joric/nrfmicro/wiki/Bootloader">https://github.com/joric/nrfmicro/wiki/Bootloader</a>
 
 #### J-Link, nRF52/nRF52840 Development Kit, and OB-ARM Debugger
-1. Install J-Link Software and Documentation Pack: <a href="https://www.segger.com/downloads/jlink/#J-LinkSoftwareAndDocumentationPack">https://www.segger.com/downloads/jlink/#J-LinkSoftwareAndDocumentationPack</a>
-1. Download Bootloader HEX File for your device (ProMicro - <a href="https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/slimenrf_promicro_bootloader-0.9.2-SlimeVR.7_s140_7.3.0.hex" target="_blank">slimenrf_promicro_bootloader-0.9.2-SlimeVR.7_s140_7.3.0.hex</a>, XIAO - <a href="https://github.com/SlimeVR/Adafruit_nRF52_Bootloader/releases/download/0.9.2-SlimeVR.7/slimenrf_xiao_sense_bootloader-0.9.2-SlimeVR.7_s140_7.3.0.hex" target="_blank">slimenrf_xiao_sense_bootloader-0.9.2-SlimeVR.7_s140_7.3.0.hex</a>)
-1. Connect Debugger to SWD IO, CLK, and GND Pins. (It is safer to power up your device by plugging into USB instead of using the VDD pin)
+
+1. Install J-Link Software and Documentation Pack: 
+    <a href="https://www.segger.com/downloads/jlink/#J-LinkSoftwareAndDocumentationPack">https://www.segger.com/downloads/jlink/#J-LinkSoftwareAndDocumentationPack</a>
+2. Download Bootloader HEX File for your device 
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>Device</th>
+        <th>HEX</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>ProMicro</td>
+      <td>
+        <a href="https://github.com/adafruit/Adafruit_nRF52_Bootloader/releases/download/0.11.0/nice_nano_bootloader-0.11.0_s140_6.1.1.hex">
+          Link
+          </a>
+      </td>
+    </tr>
+    <tr>
+      <td>XIAO</td>
+      <td>
+        <a href="https://github.com/adafruit/Adafruit_nRF52_Bootloader/releases/download/0.11.0/xiao_nrf52840_ble_sense_bootloader-0.11.0_s140_7.3.0.hex">
+          Link
+          </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+3. Connect Debugger to SWD IO, CLK, and GND Pins. (It is safer to power up your device by plugging into USB instead of using the VDD pin)
 
 ##### Flashing/Fixing bricked bootloader
 1. Launch "J-Flash Lite."

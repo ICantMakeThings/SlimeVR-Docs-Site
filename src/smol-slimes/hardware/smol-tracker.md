@@ -114,7 +114,7 @@ Buttons and slide switches are recommended but not required. Buttons can be adde
         Improve range by adding short wire to antenna
         <sup>
           <a
-            href="./smol-receiver.html#option-2-wire-antenna-mod"
+            href="./smol-receiver.md#option-2-wire-antenna-mod"
             target="_blank"
           >
             [more]
@@ -123,7 +123,7 @@ Buttons and slide switches are recommended but not required. Buttons can be adde
         or Wi-Fi antenna(for receiver)
         <sup>
           <a
-            href="./smol-receiver.html#option-3-wi-fi-antenna-mod"
+            href="./smol-receiver.md#option-3-wi-fi-antenna-mod"
             target="_blank"
           >
             [more]
@@ -138,6 +138,10 @@ Buttons and slide switches are recommended but not required. Buttons can be adde
   id="schema-canvas"
   class="chip"
 ></div>
+
+```admonish warning
+The INT pin is required, even if the tracker is not sleep enabled.
+```
 
 ## Tracker Parts
 
@@ -158,8 +162,7 @@ Buttons and slide switches are recommended but not required. Buttons can be adde
           <span id="ProMicro"> ProMicro nRF52840 </span>
         </td>
         <td>
-          A clone of the <strong>nice!nano</strong> board. Cheapest option
-          overall. <br />
+          A clone of the <strong>nice!nano</strong> board. Affordable and good quality.
           Signal strength can be improved with antenna mod.
         </td>
         <td>
@@ -170,6 +173,26 @@ Buttons and slide switches are recommended but not required. Buttons can be adde
             <li>
               <a href="https://pl.aliexpress.com/item/1005007738886550.html">
                 AliExpress TENSTAR 2pcs pack
+              </a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+	  <tr>
+        <td>
+          <span id="ProMicroB"> ProMicro nRF52840 in black </span>
+        </td>
+        <td>
+          A popular <strong>nice!nano</strong> clone. An even more affordable version.
+		  It may be necessary to apply the <a href="https://github.com/joric/nrfmicro/wiki/Alternatives#supermini-issue-fixes">SuperMini Issue Fixes</a>.
+          Signal strength can be improved with antenna mod.
+        </td>
+        <td>
+          Available on AliExpress with <code>ProMicro</code> branding.
+          <ul>
+            <li>
+              <a href="https://aliexpress.com/item/1005007266112508.html">
+                AliExpress NRF52840 Development Board
               </a>
             </li>
           </ul>
@@ -194,6 +217,11 @@ Buttons and slide switches are recommended but not required. Buttons can be adde
   </table>
 </div>
 
+```admonish warning
+A wrong pull-up resistor on black nRF52840 boards can mean up to 80% worse battery drain while powered off.
+You can also remove the resistor.
+```
+
 ### 🧭 Inertial Measurement Units
 
 Some of the supported sensor modules are described on the [IMU Comparison page](../../diy/imu-comparison.md).
@@ -205,8 +233,6 @@ Some of the supported sensor modules are described on the [IMU Comparison page](
 - ISM330BX
 - ISM330DHCX
 - ISM330DLC
-- LSM6DS3
-- LSM6DS3TR-C
 - LSM6DSL
 - LSM6DSM
 - LSM6DSO
@@ -258,20 +284,20 @@ Some of the supported sensor modules are described on the [IMU Comparison page](
                 </td>
             </tr>
             <tr>
-                <td><a href="../../diy/imu-comparison.md#lsm6dsr">LSM6DSR</a> + QMC6309</td>
+                <td><a href="../../diy/imu-comparison.md#lsm6dsv">LSM6DSV</a> + QMC6309</td>
                 <td>
-                    <a href="https://moffshop.deyta.de/products/lsm6dsr">
+                    <a href="https://moffshop.deyta.de/products/lsm6dsv-module">
                         moffshop.deyta.de
                     </a>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Chrysalis <a href="../../diy/imu-comparison.md#icm-45686">ICM-45686</a> +
+                    Chrysalis <a href="../../diy/imu-comparison.md#lsm6dsv">LSM6DSV</a> +
                     QMC6309
                 </td>
                 <td>
-                    <a href="https://nekumori.pink/products/chysalis-v1_3">
+                    <a href="https://nekumori.pink/products/chrysalis">
                         nekumori.pink
                     </a>
                 </td>
@@ -324,8 +350,21 @@ Do not skip this part when making stacked smol trackers.
 
 It is placed between the board and the IMU, on the back of the IMU, to prevent shorts and protect components.
 
+### 🧤 Strap
 
-<hr/>
+Tracker require straps or mounting solutions for practical use.
+
+Community-designed strap solutions can be found on the  
+[Smol Strap Designs](./smol-slimes-strap-designs.md) page.
+
+### 📦 Case
+
+Case protect components, improve durability, and make trackers easier to mount or wear.
+
+Community-designed cases can be found on the  
+[Smol Community Builds](./smol-slimes-community-builds.md) page.
+
+---
 
 *Created by Shine Bright ✨, [Depact](https://github.com/Depact), [Aed](https://github.com/Aed-1), and [Seneral](https://github.com/Seneral) with images from [Meia](https://github.com/kounocom) and [Firmata](https://github.com/Firmatorenio)*
 

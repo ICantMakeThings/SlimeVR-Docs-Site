@@ -2,10 +2,15 @@
 
 This guide should help you with setting up **prebuilt Slime trackers** as fast as possible. If you are using phones, DIY trackers or substituting some body locations with anything not prebuilt there are added complications.
 
-## Making sure your system is ready
+## Table of Contents
+
+- TOC
+{:toc}
+
+## Making Sure Your System Is Ready
 If you are intending to use SteamVR with your slimes, make sure it is installed and **run it at least once** before moving forward.
 
-## Install the latest SlimeVR Installer
+## Install the Latest SlimeVR Installer
 The latest [SlimeVR Installer can be found here.](https://slimevr.dev/download) Download it and install it, this installer can be used to update the server software in the future.
 
 If you are on Windows and encounter the following pop up, click _**More info**_ text to show the run button. Once it is visible, click **Run anyway** to progress.
@@ -22,14 +27,14 @@ Once you have the installer launched, click **Next >** to move through the proce
 
 Bear in mind, if you plan on using the server purely for [standalone usage via OSC](server/osc-information.md), and not PC VR via SteamVR, you can de-select **SteamVR Driver**, **SlimeVR Feeder App**, and **USB drivers**. If you don't already have SteamVR installed and have launched it previously, you may encounter an error.
 
-## Connecting and preparing your trackers
+## Connecting and Preparing Your Trackers
 
-**Video Guide:**
+### Video Guide
 <div class="video-container">
 <iframe width="100%" height="auto" src="https://www.youtube.com/embed/SkfdraicN5s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay muted; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-**Written Guide:**
+### Text Guide
 
 Be aware that SlimeVR tracker will only connect to 2.4GHz band WiFi networks and your host (pc or phone) need to be connected to the same network.
 1. Open the SlimeVR Server. On this first page you can change the applications language via the button on the bottom right. Once you are ready click **Let's get set up!**
@@ -62,7 +67,7 @@ Be aware that SlimeVR tracker will only connect to 2.4GHz band WiFi networks and
 
     ![Straps and Stickers page](assets/img/quick_prepare.png)
 
-## Choosing and assigning body locations
+## Choosing and Assigning Body Locations
 
 1. Figure out which body parts you will need to assign. Depending on how many trackers you have these are the suggested locations:
 
@@ -105,7 +110,7 @@ Be aware that SlimeVR tracker will only connect to 2.4GHz band WiFi networks and
 
 1. Repeat for each of your trackers, when you have completed this process click **Next step**.
 
-### Automatically setting mounting
+### Automatically Setting Mounting
 
 SlimeVR offers an automated process for recording which mounting orientation you have set up with your trackers, which can lead to issues for new users but for experienced users can give better results. Make sure you boot up SteamVR and put on your headset from this point. If you are using your trackers for only VMC or OSC, please use the previous steps for manually setting mounting orientation.
 
@@ -146,17 +151,17 @@ During the automated process follow the directions and SlimeVR will deduce where
 
 ### Manual Proportions
 
-If you are not using SteamVR you will have to manually set each of these values or use VRChat OSC Query to enable the use of automatic proportions. For more information on how to measure each value please refer to the information at the top of the [body proportions configuration page](server/body-config.html#measurements).
+If you are not using SteamVR you will have to manually set each of these values or use VRChat OSC Query to enable the use of automatic proportions. For more information on how to measure each value please refer to the information at the top of the [body proportions configuration page](server/body-config.md#measurements).
 
 ![Manual proportions](assets/img/quick_proportionsManual.png)
 
 For more information on how to set up VRChat OSC Query please refer to the [mobile installation]
 
-## Final settings
+## Final Settings
 
 The last step is to go to the settings page and set up the specifics of how you want to use it.
 
-### Spawning trackers
+### Spawning Trackers
 
 The SlimeVR Server now has automatic assignment of SteamVR trackers, this shows what will activate for each set with that toggle on:
 
@@ -167,7 +172,7 @@ The SlimeVR Server now has automatic assignment of SteamVR trackers, this shows 
 
 ![SteamVR Settings](assets/img/quick_settingsPage.png)
 
-## Enabling trackers on SteamVR
+## Enabling Trackers on SteamVR
 
 1. Make sure you installed SlimeVR with the installer to have the right SteamVR driver.
 1. Make sure the SlimeVR addon is enabled in SteamVR Settings > Startup/Shutdown > Manage Add-ons.
@@ -179,7 +184,13 @@ If you decide to use OSC Trackers with the Steam version of VRChat, make sure yo
 
 ![OSC Settings](assets/img/quick_oscSettings.png)
 
-From here you will need to make sure that the network address is set correctly. This will depend on what device you are running VRChat or another program with OSC compatibility on. If you are using this all on the same device, the default `127.0.0.1` should be fine, but if you are using a different device (for example, connecting your trackers to standalone quest), you will need to find the IP address of that device.
+From here you will need to make sure that the network address is set correctly.
+
+#### Software Directly on Quest
+If the server is [running on the Quest](tools/mobile-installation.md), leave the address as 127.0.0.1. 
+
+#### Software on Other Device (Phone, Laptop, Older PC Etc)
+If the server is not on the Quest, put in your Quest's IP. You can get this by opening the Quick Settings menu on your Quest, selecting Wifi, your currently connected network, and scroll down and click the arrow. The IP address is listed there [video tutorial on how to find your Quest's IP](https://www.youtube.com/watch?v=gL1vgWubcJw).
 
 Then, you can toggle on which locations that you need using the following suggestions: 
 
@@ -192,16 +203,16 @@ If you wish to change to SteamVR trackers, you will have to disable OSC and turn
 
 For more information on OSC, please visit the [OSC page](server/osc-information.md).
 
-## Congratulations, your Slime trackers should now be set up!
+## Congratulations, Your Slime Trackers Should Now Be Set Up!
 
 ![Setup complete page](assets/img/quick_allDone.png)
 
-### Putting them on again after this setup
+### Putting Them on Again After This Setup
 
 The next time you want to use your trackers, all you need to do is put them on and go through the Mounting Calibration wizard quickly. All other settings should be saved from your initial setup! Make sure that you have your headset on and SteamVR running before going through this process.
 
 
-### Having problems?
+### Having Problems?
 
 **My trackers in SteamVR aren't set up properly**
 

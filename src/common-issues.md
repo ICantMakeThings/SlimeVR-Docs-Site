@@ -27,15 +27,6 @@ From there, switch the setting called "Network Profile Type" to "Private Network
 ![network1](assets/img/network_private_1.png)
 ![network2](assets/img/network_private_2.png)
 
-## SlimeVR Feeder App not connected
-Ensure both SlimeVR and SteamVR are running and that the SlimeVR Feeder app is enabled in the Startup Overlay Apps. Follow the guide below on enabling it.
-
-![Enable Feeder App](assets/img/Spazzwan-enable-feeder-app.webp)
-
-If the app does not appear in SteamVR, you may have to run the SlimeVR installer again in Repair Mode. Make sure "SlimeVR Feeder App" is ticked before continuing.
-
-![Repair Feeder App](assets/img/Common-issues-repair-feeder-app.webp)
-
 ## Feeder App window closes immediately after opening
 This is intended behaviour on later versions—the Feeder app continues to run in the background after the window auto-closes. 
 
@@ -77,11 +68,12 @@ The two common issues that cause this error are:
 - Make sure you are using WiFi channels 1-11. Avoid using channels 12-14 because connection issues may occur.
 - Ensure WPA3 WiFi security is not being used, as the SlimeVR trackers do not support this security protocol. We recommend using WPA2, which is fully supported by SlimeVR.
 - Try restarting your router to see if this resolves the issue.
+- When using a WiFi 7 router, try disabling MLO or switching from 'Performance' to 'Compatibility' mode (sometimes called 'Max interoperability' mode).
 
 If all of this is correct, you can check your gateway's list of connected devices to see if all your trackers are connecting. If a tracker is not connecting even after using the same firmware upload with hardcoded Wi-Fi details there are two additional steps you can check:
 
 - Check if your Wi-Fi has reached its maximum allowed Wi-Fi connections. You can test this by disconnecting devices and then trying to connect your trackers again.
-- If you hard coded your Wi-Fi settings in `platformio.ini` try connecting your trackers via USB and [pushing new Wi-Fi details](server/connecting-trackers.md#connect-trackers). You may find this either fixes your connection or provides you with additional details on why the connection is failing.
+- If you hard coded your Wi-Fi settings in `platformio.ini` try connecting your trackers via USB and [pushing new Wi-Fi details](server/connecting-trackers.md#connecting-trackers). You may find this either fixes your connection or provides you with additional details on why the connection is failing.
 
 ## The trackers are connected to Wi-Fi but can't find the server
 
@@ -147,7 +139,7 @@ The most common reasons for errors with the IMU are the following:
 
 ## My tracker keeps flashing
 
-This is intended behavior, the number of flashes lets you know the current status of your tracker. Check the top of the [the setup page for more info](server-setup/initial-setup.md#test-your-trackers).
+This is intended behavior, the number of flashes lets you know the current status of your tracker. Check the top of the [the setup page for more info](server/initial-setup.md#test-your-trackers).
 
 ## My aux tracker isn't working
 - Ensure that the tracker was powered off before the aux tracker was connected.
@@ -196,6 +188,7 @@ This will be due to either your physical or bone length setup. Try:
 - Make sure your floor level is correct by redrawing your boundary. If on Quest or other standalone headsets, clear boundary history.
 - Ensure your real height is your actual IRL height in both SlimeVR and VRChat
 - This may also be caused by a niche issue with specific avatars, try switching to an alternative avatar and recalibrating in VRChat.
+- If you're using a Quest headset, turn off `Use in a lying position` (or similar options) in the headset settings. This can cause both floating and sinking issues.
 
 ## My legs don't bend
 
@@ -249,6 +242,15 @@ Additionally, this can be caused by software hogging COM ports (**VSCode and Cur
 ## Quest Pro controllers cause high latency / lag
 
 Quest Pro controllers can use 2.4 GHz Wi-Fi to connect to your headset, this can cause interference with SlimeVR trackers as they also use 2.4 GHz Wi-Fi. The easiest current solution is to change your 2.4ghz WiFi channel through your router, though this may not always work. If you wish to find the Quest Pro controller's Wi-Fi, it should be called something like "DIRECT-Meta-XXXX". You can read the [Meta support article for Wi-Fi troubleshooting for the Quest Pro controllers](https://www.meta.com/help/quest/articles/getting-started/getting-started-with-quest-pro/wi-fi-troubleshooting-touch-pro-controllers/) for more information.
+
+## Magnetometer value is `0.0/0.0/0.0` on SlimeVR server
+This is intended behavior due to hardware limitations of the ESP8266.
+There is not enough time to fetch the raw data and send it to server, because ESP8266 utilizes bit-banging and time for I2C transactions is limited.
+It does not mean your sensor is dead or SlimeVR is not using magnetometer sensor.
+
+For more information, checkout this [github issue](https://github.com/SlimeVR/SlimeVR-Tracker-ESP/issues/510#issuecomment-3704191542).
+
+
 
 ## References
 

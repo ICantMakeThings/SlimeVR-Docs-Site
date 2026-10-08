@@ -74,10 +74,11 @@ Note that drift refers to the *gradual* loss of tracking accuracy and is inheren
 - Magnetometer
 - [IMU](#imu)
 - Stay Aligned
+- [Reset Time](#reset-time)
 
 ## Session Calibration
 
-There are multiple different session calibrations within the SlimeVR Server; these are commonly referred to as "resets". These are forms of calibration that are generally not saved and need to be done during each session of SlimeVR. See the [Sub-Terms](#session-calibration-sub-terms) for the types of session calibrations.
+There are multiple different session calibrations within the SlimeVR Server; these are commonly referred to as "resets". These are forms of calibration that are generally not saved and need to be done during each session of SlimeVR. See the [Sub-Terms](#session-calibration-sub) for the types of session calibrations.
 
 ### Synonyms {#session-calibration-synonyms}
 
@@ -119,6 +120,13 @@ A "yaw reset" is a [Session Calibration](#session-calibration) that re-orients t
 
 - Fast Reset
 - Quick Reset
+
+## Reset Time
+Reset time refers to the rough amount of time a given IMU will take to accumulate enough drift to require a [yaw reset](#yaw-reset). This is a subjective measurement and is based on how much drift a user will tolerate.
+
+### Related Terms {#reset-time-related}
+- [Yaw Reset](#yaw-reset)
+- [Drift](#drift)
 
 ## Mounting Orientation
 
